@@ -1,5 +1,21 @@
-type Todo @model {
-  id: ID!
-  name: String!
+type location {
+  lat : String
+  lng : String
+}
+
+type Establishment {
+  id: Int
+  name: String
   description: String
+  location: location,
+  cep: String
+  fullAddress: String
+  neighborhood: String
+  city: String
+  state: String
+  slug: String
+}
+
+type Query {
+  getEstablishment: Establishment @http(url: "https://api.salaovip.com.br/salao/:id")
 }
