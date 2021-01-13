@@ -1,22 +1,15 @@
-type location {
-  lat : String
-  lng : String
-}
+# type Establishment {
+#   id: Int
+#   name: String
+# }
 
-type Establishment {
-  id: Int
-  name: String
-  description: String
-  location: location,
-  cep: String
-  fullAddress: String
-  neighborhood: String
-  city: String
-  state: String
-  slug: String
+type Cep {
+  logradouro: String
+  localidade: String
 }
 
 type Query {
-  getEstablishment: Establishment @http(url: "https://api.salaovip.com.br/salao/:id")
-  allEstablishment: Establishment @http(url: "https://api.salaovip.com.br/saloes")
+  # getEstablishment: Establishment @http(url: "https://api.salaovip.com.br/salao/:id")
+  # allEstablishment: Establishment @http(url: "https://api.salaovip.com.br/saloes")
+  cep: Cep @http(url: "https://viacep.com.br/ws/50670350/json/")
 }
