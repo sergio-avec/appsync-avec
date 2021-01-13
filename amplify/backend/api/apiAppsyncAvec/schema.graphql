@@ -18,4 +18,5 @@ type Establishment {
 
 type Query {
   getEstablishment: Establishment @http(url: "https://api.salaovip.com.br/salao/:id")
+  allEstablishment: Establishment @http(url: "https://api.salaovip.com.br/saloes")
 }

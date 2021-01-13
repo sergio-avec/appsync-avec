@@ -1,0 +1,21 @@
+#if( $ctx.error )
+$util.qr($util.appendError($ctx.result.body, $ctx.result.statusCode))
+#else
+#set($json = $util.parseJson($ctx.result.body))
+#set($establishment = $json.data.salon)
+$util.toJson({
+  "id": $establishment.id,
+  "name": $establishment.nome,
+  "description": $establishment.descricao,
+  "location": {
+    "lat" : $establishment.latitude,
+    "lng" : $establishment.longitude
+  },
+  "cep": $establishment.cep,
+  "fullAddress": "$establishment.endereco - $establishment.bairro. $establishment.cidade - $establishment.estado",
+  "neighborhood": $establishment.bairro,
+  "city": $establishment.cidade,
+  "state": $establishment.estado,
+  "slug": $establishment.slug
+})
+#end
