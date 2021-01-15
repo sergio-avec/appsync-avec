@@ -3,13 +3,14 @@
 #   name: String
 # }
 
-type Cep {
-  logradouro: String
-  localidade: String
-}
+# type Cep {
+#   logradouro: String
+#   localidade: String
+# }
 
 type Query {
   # getEstablishment: Establishment @http(url: "https://api.salaovip.com.br/salao/:id")
   # allEstablishment: Establishment @http(url: "https://api.salaovip.com.br/saloes")
-  cep: Cep @http(url: "https://viacep.com.br/ws/50670350/json/")
+  # cep: Cep @http(url: "https://viacep.com.br/ws/50670350/json/")
+  getCepApi(cep: String): String @function(name: "getCepApiLambda-${env}")
 }
